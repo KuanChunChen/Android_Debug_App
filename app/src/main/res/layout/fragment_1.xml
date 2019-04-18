@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/liner_frag"
+    >
+
+    <LinearLayout
+        android:id="@+id/frag1_liner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+
+        <Button
+            android:id="@+id/frag1_btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Transfer file" />
+
+        <Button
+            android:id="@+id/frag1_btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="enable debug" />
+
+        <Button
+            android:id="@+id/frag1_btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="disable debug" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/frag1_liner2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="55dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_below="@id/frag1_liner">
+
+        <TextView
+            android:id="@+id/frag1_text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF0000"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/frag1_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0000FF"
+            android:scrollbars="vertical"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/frag1_text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00FF00"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,16 @@
+-1.0.8-
+This application contain below feature:
+
+1.It contain FragmentManager that can add serverl fragment into this container.
+2.There are foue fragment now ,and each have different feature.
+3.MachineUtil can help you to connect to other socket server.
+4.BatteryListener can help you observe battery status.
+5.PermissionManager can help you open android system permission.
+6.CheckAplicationStatus can check application is keep runnung.
+7.GetTerminalInfo can get device info from android level.
+8.WifiController control wifi related.
+
+
+
+gradle version is 'gradle:3.1.3'.
+ 
