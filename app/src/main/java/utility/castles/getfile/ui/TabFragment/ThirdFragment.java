@@ -29,9 +29,11 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import utility.castles.getfile.Controller.CheckAplicationStatus;
 import utility.castles.getfile.Controller.GetTerminalInfo;
+import utility.castles.getfile.Define.DebugAppConstants;
 import utility.castles.getfile.Model.TerminalInfomation;
 import utility.castles.getfile.R;
 import utility.castles.getfile.module.battery.BatteryListener;
+import utility.castles.getfile.module.permission.PermissionManager;
 import utility.castles.getfile.util.MachineUtil;
 
 import static utility.castles.getfile.Define.Define.d_CTMS_SERVICE_PACKAGE;
@@ -78,9 +80,7 @@ public class ThirdFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onStateChanged(Intent mIntent) {
 
-                TelephonyManager telManager = ((TelephonyManager) view.getContext().getSystemService(Context.TELEPHONY_SERVICE));
-                GetTerminalInfo myGetTerminalInfo = new GetTerminalInfo();
-                terminalInfomation = myGetTerminalInfo.getGsonInformation(view.getContext());
+
 
                 Log.e("zhang", "MainActivity --> onStateChanged--> ");
                 int lv = mIntent.getIntExtra("level", 0);
@@ -93,7 +93,7 @@ public class ThirdFragment extends Fragment implements View.OnClickListener {
                 baOut = Integer.toString(iInstallFailReturn).getBytes();
                 String Hex = Integer.toHexString(-1);
 
-                tv1.setText(String.valueOf(lv) + "%" + "\r\n" + boIsRunning + "\r\n" + myInfo.toJson(terminalInfomation));
+                tv1.setText(String.valueOf(lv) + "%" + "\r\n" + boIsRunning + "\r\n" );
                 for (int i = 0; i < baOut.length; i++) {
                     Log.e("CTMS", "baOut" + "[" + i + "]：" + Integer.toHexString(baOut[i]));
 
@@ -167,6 +167,21 @@ public class ThirdFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    public void initListview(){
+
+        TelephonyManager telManager = ((TelephonyManager) view.getContext().getSystemService(Context.TELEPHONY_SERVICE));
+        GetTerminalInfo myGetTerminalInfo = new GetTerminalInfo();
+        terminalInfomation = myGetTerminalInfo.getGsonInformation(view.getContext());
+
+        Log.d("My terminal info", myInfo.toJson(terminalInfomation));
+
+    }
+
+    public void initPermission(){
+        if(!PermissionManager.checkPermission(view.getContext(), DebugAppConstants.Permission.PERMISSION_GET_TERMINAL_INFO)) {
+            PermissionManager.requestPermissions(view.getContext(),DebugAppConstants.Permission.PERMISSION_GET_TERMINAL_INFO,DebugAppConstants.Permission.PERMISSION_GET_TERMINAL_INFO_CODE);
+        }
+    }
 
     @Override
     public void onDestroy() {
