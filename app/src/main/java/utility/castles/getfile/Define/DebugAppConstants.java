@@ -14,7 +14,12 @@ public class DebugAppConstants {
         public static final int PERMISSION_STORAGE_REQUEST_CODE = 1;
 
         public static final String[] PERMISSION_GET_TERMINAL_INFO = {Manifest.permission.READ_SMS,
-                Manifest.permission.READ_PHONE_NUMBERS,Manifest.permission.READ_PHONE_STATE};
+                Manifest.permission.READ_PHONE_NUMBERS,
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.ACCESS_FINE_LOCATION};
+        public static final String[] PERMISSION_GET_TERMINAL_INFO_2 = {Manifest.permission.READ_SMS,
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.ACCESS_FINE_LOCATION};
 
         public static final int PERMISSION_GET_TERMINAL_INFO_CODE = 2;
 

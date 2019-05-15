@@ -52,6 +52,7 @@ public class PermissionManager {
 
     }
 
+
     public static boolean checkPermission(Context mContext,String[] strPremissions) {
 
         for (String strSinglePermission : strPremissions) {
