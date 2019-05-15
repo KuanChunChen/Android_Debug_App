@@ -53,31 +53,31 @@ public class BatteryListener {
             if (intent != null) {
                 String acyion = intent.getAction();
                 switch (acyion) {
-                    case Intent.ACTION_BATTERY_CHANGED://电量发生改变
+                    case Intent.ACTION_BATTERY_CHANGED://電量發生改變
                         if (mBatteryStateListener != null) {
                             Log.e("BatteryListener", "BatteryBroadcastReceiver --> onReceive--> ACTION_BATTERY_CHANGED");
                             mBatteryStateListener.onStateChanged(intent);
                         }
                         break;
-                    case Intent.ACTION_BATTERY_LOW://电量低
+                    case Intent.ACTION_BATTERY_LOW://電量低
                         if (mBatteryStateListener != null) {
                             Log.e("BatteryListener", "BatteryBroadcastReceiver --> onReceive--> ACTION_BATTERY_LOW");
                             mBatteryStateListener.onStateLow();
                         }
                         break;
-                    case Intent.ACTION_BATTERY_OKAY://电量充满
+                    case Intent.ACTION_BATTERY_OKAY://電量充滿
                         if (mBatteryStateListener != null) {
                             Log.e("BatteryListener", "BatteryBroadcastReceiver --> onReceive--> ACTION_BATTERY_OKAY");
                             mBatteryStateListener.onStateOkay();
                         }
                         break;
-                    case Intent.ACTION_POWER_CONNECTED://接通电源
+                    case Intent.ACTION_POWER_CONNECTED://接通電源
                         if (mBatteryStateListener != null) {
                             Log.e("BatteryListener", "BatteryBroadcastReceiver --> onReceive--> ACTION_POWER_CONNECTED");
                             mBatteryStateListener.onStatePowerConnected();
                         }
                         break;
-                    case Intent.ACTION_POWER_DISCONNECTED://拔出电源
+                    case Intent.ACTION_POWER_DISCONNECTED://拔出電源
                         if (mBatteryStateListener != null) {
                             Log.e("BatteryListener", "BatteryBroadcastReceiver --> onReceive--> ACTION_POWER_DISCONNECTED");
                             mBatteryStateListener.onStatePowerDisconnected();

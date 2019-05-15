@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,6 +25,9 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import CTOS.CtCtms;
 import CTOS.CtSystem;
 import butterknife.BindView;
@@ -29,9 +35,11 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import utility.castles.getfile.Controller.CheckAplicationStatus;
 import utility.castles.getfile.Controller.GetTerminalInfo;
+import utility.castles.getfile.Define.DebugAppConstants;
 import utility.castles.getfile.Model.TerminalInfomation;
 import utility.castles.getfile.R;
 import utility.castles.getfile.module.battery.BatteryListener;
+import utility.castles.getfile.module.permission.PermissionManager;
 import utility.castles.getfile.util.MachineUtil;
 
 import static utility.castles.getfile.Define.Define.d_CTMS_SERVICE_PACKAGE;
@@ -49,6 +57,8 @@ public class ThirdFragment extends Fragment implements View.OnClickListener {
 
     private CtCtms ct = new CtCtms();
 
+    private List<TerminalInfomation> TerminalInfomationList
+            = new ArrayList<TerminalInfomation>();
 
     private TerminalInfomation terminalInfomation = new TerminalInfomation();
     private Gson myInfo = new Gson();
@@ -64,6 +74,8 @@ public class ThirdFragment extends Fragment implements View.OnClickListener {
 
 
         unbinder = ButterKnife.bind(this, view);
+        initPermission();
+        initListview();
         init();
         return view;
     }
@@ -78,9 +90,7 @@ public class ThirdFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onStateChanged(Intent mIntent) {
 
-                TelephonyManager telManager = ((TelephonyManager) view.getContext().getSystemService(Context.TELEPHONY_SERVICE));
-                GetTerminalInfo myGetTerminalInfo = new GetTerminalInfo();
-                terminalInfomation = myGetTerminalInfo.getGsonInformation(view.getContext());
+
 
                 Log.e("zhang", "MainActivity --> onStateChanged--> ");
                 int lv = mIntent.getIntExtra("level", 0);
@@ -93,7 +103,7 @@ public class ThirdFragment extends Fragment implements View.OnClickListener {
                 baOut = Integer.toString(iInstallFailReturn).getBytes();
                 String Hex = Integer.toHexString(-1);
 
-                tv1.setText(String.valueOf(lv) + "%" + "\r\n" + boIsRunning + "\r\n" + myInfo.toJson(terminalInfomation));
+                tv1.setText(String.valueOf(lv) + "%" + "\r\n" + boIsRunning + "\r\n" );
                 for (int i = 0; i < baOut.length; i++) {
                     Log.e("CTMS", "baOut" + "[" + i + "]：" + Integer.toHexString(baOut[i]));
 
@@ -167,6 +177,54 @@ public class ThirdFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+
+
+    public void initListview(){
+
+        if(PermissionManager.checkPermission(view.getContext(), DebugAppConstants.Permission.PERMISSION_GET_TERMINAL_INFO)) {
+            TelephonyManager telManager = ((TelephonyManager) view.getContext().getSystemService(Context.TELEPHONY_SERVICE));
+            GetTerminalInfo myGetTerminalInfo = new GetTerminalInfo();
+            terminalInfomation = myGetTerminalInfo.getGsonInformation(view.getContext());
+            Log.d("My terminal info", myInfo.toJson(terminalInfomation));
+        }else{
+            Log.d("My terminal info", "No permission");
+        }
+    }
+
+
+    public void initPermission(){
+        if(!PermissionManager.checkPermission(view.getContext(), DebugAppConstants.Permission.PERMISSION_GET_TERMINAL_INFO)) {
+//            PermissionManager.requestPermissions(view.getContext(),DebugAppConstants.Permission.PERMISSION_GET_TERMINAL_INFO,DebugAppConstants.Permission.PERMISSION_GET_TERMINAL_INFO_CODE);
+            requestPermissions(DebugAppConstants.Permission.PERMISSION_GET_TERMINAL_INFO_2, DebugAppConstants.Permission.PERMISSION_GET_TERMINAL_INFO_CODE);
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case DebugAppConstants.Permission.PERMISSION_GET_TERMINAL_INFO_CODE: {
+                boolean boJudge = true;
+                for(int permissionGrant:grantResults){
+                    Log.d("grantResults", String.valueOf(permissionGrant));
+                    if (permissionGrant != PackageManager.PERMISSION_GRANTED) {
+                        boJudge = false;
+                    }
+                }
+
+                if (boJudge) {
+                    Log.d("grantResults", "finished!");
+                } else {
+                    Log.d("grantResults", "Not allow!");
+                }
+                break;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
 
     @Override
     public void onDestroy() {
