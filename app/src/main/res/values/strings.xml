@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">TransFileLocationTool</string>
+    <string name="app_name">Debug_app</string>
     <string name="getfile">GetInsideFile</string>
     <string name="debug">GetUSBfile</string>
     <string name="setting">setting</string>
     <string name="wifi">wifiManager</string>
+    <string name="api">apiTest</string>
 </resources>

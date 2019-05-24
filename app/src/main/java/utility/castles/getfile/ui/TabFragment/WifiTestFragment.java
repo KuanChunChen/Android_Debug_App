@@ -18,8 +18,7 @@ import butterknife.Unbinder;
 import utility.castles.getfile.Controller.CtmsConfigFun;
 import utility.castles.getfile.Controller.WifiController;
 import utility.castles.getfile.R;
-
-import static utility.castles.getfile.Define.Define.d_JSON_CTMS_CONFIG_REWRITE_A;
+import utility.castles.getfile.util.ConfigurationUtil;
 
 
 public class WifiTestFragment extends Fragment {
@@ -56,10 +55,14 @@ public class WifiTestFragment extends Fragment {
     @OnClick(R.id.frag4_btn1)
     public void onBtnWifiTestClick() {
 
-        mMifiController.getWifi();
+//        mMifiController.getWifi();
+//        Log.d("CTMS_configA", mGetCtmsConfig.getAllconfig());
+//        mGetCtmsConfig.setAllConfig(d_JSON_CTMS_CONFIG_REWRITE_A);
         Log.d("CTMS_configA", mGetCtmsConfig.getAllconfig());
-        mGetCtmsConfig.setAllConfig(d_JSON_CTMS_CONFIG_REWRITE_A);
-        Log.d("CTMS_configB", mGetCtmsConfig.getAllconfig());
+        ConfigurationUtil.setTlsConfig();
+        ConfigurationUtil.setCM_Mode(true);
+        Log.d("CTMS_configC", mGetCtmsConfig.getAllconfig());
+
     }
 
     @Override

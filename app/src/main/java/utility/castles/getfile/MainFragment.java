@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import utility.castles.getfile.ui.TabFragment.APIFragment;
 import utility.castles.getfile.ui.TabFragment.FirstFragment;
 import utility.castles.getfile.ui.TabFragment.SecondFragment;
 import utility.castles.getfile.ui.TabFragment.ThirdFragment;
@@ -24,12 +25,13 @@ public class MainFragment extends AppCompatActivity {
     private SecondFragment SecondFragment = new SecondFragment();
     private ThirdFragment ThirdFragment = new ThirdFragment();
     private WifiTestFragment WifiTestFragment = new WifiTestFragment();
-
+    private APIFragment APIFragment = new APIFragment();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainfragment);
         BottomNavigationView bnve = findViewById(R.id.bnve);
 
+        getSupportFragmentManager().beginTransaction().add(R.id.lay_container, APIFragment).hide(APIFragment).commit();
 
         getSupportFragmentManager().beginTransaction().add(R.id.lay_container, WifiTestFragment).hide(WifiTestFragment).commit();
 
@@ -60,6 +62,10 @@ public class MainFragment extends AppCompatActivity {
                     case R.id.menu_wifi:
                         getSupportFragmentManager().beginTransaction().hide(currentFragment).show(WifiTestFragment).commit();
                         currentFragment = WifiTestFragment;
+                        break;
+                    case R.id.Api_test:
+                        getSupportFragmentManager().beginTransaction().hide(currentFragment).show(APIFragment).commit();
+                        currentFragment = APIFragment;
                         break;
 
                 }

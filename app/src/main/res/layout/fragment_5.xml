@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/ed_ip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="host ip"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/ed_port"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="host port"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/frag5_btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TLS On" />
+
+            <Button
+                android:id="@+id/frag5_btn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SetTLSConfig" />
+
+            <Button
+                android:id="@+id/frag5_btn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TLS Off" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/frag5_btn4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="CTMS Enable" />
+
+            <Button
+                android:id="@+id/frag5_btn5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SetTCP" />
+
+            <Button
+                android:id="@+id/frag5_btn6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="CTMS disable" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/frag5_btn_7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GetAllConfig" />
+
+        <Button
+            android:id="@+id/frag5_btn_8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clean Edit Text" />
+
+        <Button
+            android:id="@+id/frag5_btn_leave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Exit" />
+
+        <TextView
+            android:id="@+id/frag5_text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars = "vertical"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

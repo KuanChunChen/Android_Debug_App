@@ -17,4 +17,8 @@
         android:id="@+id/menu_wifi"
         android:icon="@drawable/ic_audiotrack_black_24dp"
         android:title="@string/wifi" />
+    <item
+        android:id="@+id/Api_test"
+        android:icon="@drawable/ic_audiotrack_black_24dp"
+        android:title="@string/wifi" />
 </menu>

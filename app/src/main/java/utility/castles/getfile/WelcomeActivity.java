@@ -38,7 +38,7 @@ public class WelcomeActivity extends Activity {
             e.printStackTrace();
         }
         tvNameVersion = findViewById(R.id.tvNameVersion);
-        strWelComeTitle = "TransFileTool_" + pkgInfo.versionName;
+        strWelComeTitle = getString(R.string.app_name) + pkgInfo.versionName;
         tvNameVersion.setText(strWelComeTitle);
     }
 }
