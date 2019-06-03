@@ -18,6 +18,7 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
     <uses-feature android:name="android.hardware.usb.host" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -31,7 +32,7 @@
 
         <activity
             android:name=".WelcomeActivity"
-            android:theme="@android:style/Theme.NoTitleBar">>
+            android:theme="@style/Theme.AppCompat.Light" >>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,6 +41,11 @@
 
         </activity>
 
+        <activity
+            android:name=".APIActivity">
+
+
+        </activity>
         <activity
             android:name=".MainActivity">
 

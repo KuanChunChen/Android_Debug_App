@@ -2,6 +2,8 @@ package utility.castles.getfile;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -104,8 +108,8 @@ public class APIActivity extends AppCompatActivity implements View.OnClickListen
                 if (edIp.getText().toString().isEmpty() || edPort.getText().toString().isEmpty()) {
 
                     frag5Text1.setText("Set TLS" + "\n" + ConfigurationUtil.setTlsConfig());
-                }else{
-                    frag5Text1.setText("Set TLS" + "\n" + ConfigurationUtil.setTlsConfig(edIp.getText().toString(),edPort.getText().toString()));
+                } else {
+                    frag5Text1.setText("Set TLS" + "\n" + ConfigurationUtil.setTlsConfig(edIp.getText().toString(), edPort.getText().toString()));
                 }
 
                 frag5Text1.setTextColor(Color.BLUE);
@@ -134,8 +138,8 @@ public class APIActivity extends AppCompatActivity implements View.OnClickListen
                 if (edIp.getText().toString().isEmpty() || edPort.getText().toString().isEmpty()) {
 
                     frag5Text1.setText("Set TCP" + "\n" + ConfigurationUtil.setTcpConfig());
-                }else{
-                    frag5Text1.setText("Set TCP" + "\n" + ConfigurationUtil.setTcpConfig(edIp.getText().toString(),edPort.getText().toString()));
+                } else {
+                    frag5Text1.setText("Set TCP" + "\n" + ConfigurationUtil.setTcpConfig(edIp.getText().toString(), edPort.getText().toString()));
                 }
                 frag5Text1.setTextColor(Color.BLUE);
                 Log.d("CTMS_configAll", ConfigurationUtil.getAllConfig());
@@ -164,9 +168,34 @@ public class APIActivity extends AppCompatActivity implements View.OnClickListen
                 edIp.getText().clear();
                 frag5Text1.setText("");
                 frag5Text1.setMovementMethod(ScrollingMovementMethod.getInstance());
+                final PackageManager packageManager = this.getPackageManager();
+                List<ApplicationInfo> installedApplications = packageManager.getInstalledApplications(PackageManager.GET_META_DATA | PackageManager.GET_SHARED_LIBRARY_FILES);
+                for (ApplicationInfo appInfo : installedApplications) {
+                    if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 1) {
+                        // System application so do nothing
+                    } else {
+                        // Installed by user
+//                    Log.d("CTMS","[ClientThread]Name: " + appInfo.loadLabel(packageManager));
+                        Log.i("MyTest", "[ClientThread]Name: " + appInfo.loadLabel(packageManager));
+
+
+                        Log.i("MyTest", appInfo.publicSourceDir + "/test.CAP" + "\r\n" +
+                                appInfo.sourceDir + "/test.CAP" + "\r\n" +
+                                "UID = " + appInfo.uid);
+//                        Log.e("CTMS", appInfo.publicSourceDir+"/test.CAP");
+//                        Log.e("CTMS", appInfo.sourceDir+"/test.CAP");
+//                        Log.e("CTMS", "UID = " + appInfo.uid);
+                        int iuid = appInfo.uid;
+                        String filepathformt = appInfo.sourceDir;
+                        int flen = filepathformt.length();
+                        String apkpath = filepathformt.replace("base.apk", "PRM");
+                        Log.i("Apk path: ", apkpath);
+
 //                Log.d("CTMS_configAll", ConfigurationUtil.getAllConfig());
 
-                break;
+                        break;
+                    }
+                }
         }
     }
 

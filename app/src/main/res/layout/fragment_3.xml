@@ -13,8 +13,12 @@
             android:id="@+id/frag3_btn2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Get" />
-
+            android:text="GetCradle" />
+        <Button
+            android:id="@+id/frag3_btn3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TestServiceCase" />
         <TextView
             android:id="@+id/frag3_text1"
             android:layout_width="match_parent"

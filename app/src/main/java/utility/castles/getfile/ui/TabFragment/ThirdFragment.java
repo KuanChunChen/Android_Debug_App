@@ -25,7 +25,13 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import CTOS.CtCtms;
@@ -47,7 +53,9 @@ import static utility.castles.getfile.Define.Define.d_CTMS_SERVICE_PACKAGE;
 public class ThirdFragment extends Fragment implements View.OnClickListener {
 
     private static View view;
+    private String strCMFVersion = null;
 
+    @BindView(R.id.frag3_btn3) Button btn_Service;
     @BindView(R.id.frag3_btn2) Button btn_GET;
     @BindView(R.id.frag3_text1) TextView tv1;
     @BindView(R.id.frag3_btn1) Button btn_Return;
@@ -85,6 +93,7 @@ public class ThirdFragment extends Fragment implements View.OnClickListener {
         tv1.setMovementMethod(ScrollingMovementMethod.getInstance());
         btn_Return.setOnClickListener(this);
         btn_GET.setOnClickListener(this);
+        btn_Service.setOnClickListener(this);
         listener = new BatteryListener(view.getContext());
         listener.register(new BatteryListener.BatteryStateListener() {
             @Override
@@ -163,18 +172,155 @@ public class ThirdFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.frag3_btn2:
 
-                String strMy = new MachineUtil(getContext()).getCradleVersion();
-                if (strMy == null) {
-                    Toast.makeText(getContext(), "string is null", Toast.LENGTH_LONG).show();
-                    Log.e("My cradle ", "string is null");
-                } else {
-                    Log.e("My cradle ", strMy);
-                    Toast.makeText(getContext(), "My cradele =" + strMy, Toast.LENGTH_LONG).show();
+                String strCMF_version = "00280000000092210022";
+                String strBios = strCMF_version.substring(0, 4);
+                String strSuld = strCMF_version.substring(4, 8);
+                String strKernel = strCMF_version.substring(8, 12);
+                String strRootFS = strCMF_version.substring(12, 16);
+                String strMainAP = strCMF_version.substring(16, 20);
+                Log.i("MyData","CMF VR = " + strCMF_version + "\r\n" +
+                        "Bios VR = " + strBios + "\r\n" +
+                        "Suld VR = " + strSuld + "\r\n" +
+                        "Kernel VR = " + strKernel + "\r\n" +
+                        "RootFS VR = " + strRootFS + "\r\n"+
+                        "MainAP VR = " + strMainAP + "\r\n");
+                try {
+                    Thread getCradleThread = new Thread(new Runnable() {
+                        public void run() {
+                            strCMFVersion = new MachineUtil(getContext()).getCradleVersion();
+
+
+                        }
+                    });
+                    getCradleThread.start();
+                    getCradleThread.join();
+
+
+                    String ResBios = null, ResSuld = null, ResKernel = null, ResRootFs = null, ResMainAP = null;
+
+                    if (strCMFVersion == null) {
+                        Toast.makeText(getContext(), "string is null", Toast.LENGTH_LONG).show();
+                        Log.e("My cradle ", "string is null");
+                    } else {
+                        Log.e("My cradle ", strCMFVersion);
+                        Toast.makeText(getContext(), "My cradele =" + strCMFVersion, Toast.LENGTH_LONG).show();
+                        String[] strArrayCradle = strCMFVersion.split("\\s+");
+                        for (String each: strArrayCradle){
+                            if(each.contains("BIOS")){
+                                ResBios = each.substring(7, 11);
+                                Log.i("BIOS : ---", "" + ResBios);
+                            }else if(each.contains("SULD")){
+                                ResSuld = each.substring(7, 11);
+                                Log.i("SULD : ---", "" + ResSuld);
+                            }else if(each.contains("KERNEL")){
+                                ResKernel  = each.substring(9, 13);
+                                Log.i("KERNEL : ---", "" + ResKernel);
+                            }else if(each.contains("ROOTFS")){
+                                ResRootFs = each.substring(9, 13);
+                                Log.i("ROOTFS : ---", "" + ResRootFs);
+                            }else if(each.contains("MainAP")){
+                                ResMainAP  = each.substring(9, 13);
+                                Log.i("MainAP : ---", "" + ResMainAP);
+                            }
+                        }
+
+
+                        if (strBios.equals("0000")) {
+                            ResBios = strBios;
+                        }
+
+                        if (strSuld.equals("0000")) {
+                            ResSuld = strSuld;
+                        }
+
+                        if (strKernel.equals("0000")) {
+                            ResKernel = strKernel;
+                        }
+
+                        if (strRootFS.equals("0000")) {
+                            ResRootFs = strRootFS;
+                        }
+
+                        if (strMainAP.equals("0000")) {
+                            ResMainAP = strMainAP;
+                        }
+                        Log.i("MyData2", "Bios VR = " + ResBios + "\r\n" +
+                                "Suld VR = " + ResSuld + "\r\n" +
+                                "Kernel VR = " + ResKernel + "\r\n" +
+                                "RootFS VR = " + ResRootFs + "\r\n" +
+                                "MainAP VR = " + ResMainAP + "\r\n");
+
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
 
 
                 break;
+            case R.id.frag3_btn3:
+                Boolean boStatus = false;
+                JSONObject jsonObject = new JSONObject();
+
+                JSONArray jsonArray = new JSONArray();
+                int iInstallFailReturn = 0;
+                if(boStatus) {
+                    try {
+                        jsonObject.put("STATUS", 2);
+                        jsonObject.put("TYPE", "Android App");
+                        jsonObject.put("NAME", "com.itube.colorseverywhere");
+                        jsonObject.put("VR", "3.8.10");
+                        jsonObject.put("PATH", "/data/CTMS/Download/APK/30/itube.CAP");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    try {
+                        jsonObject.put("STATUS", 7);
+                        jsonObject.put("TYPE", "CMF");
+                        jsonObject.put("NAME", "CradleModuleFW");
+                        jsonObject.put("VR", "0028F030003292210022");
+                        jsonObject.put("PATH", "/data/CTMS/Download/Temp/57/SC_9221_sOff.zip.CAP");
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                jsonArray.put(jsonObject);
+                Log.d("My array ", jsonArray.toString());
+
+                try {
+                    byte[] baJson = jsonArray.toString(1).getBytes();
+                    int iJsonlen = baJson.length;
+                    byte[] balen = ByteBuffer.allocate(4).putInt(iJsonlen).array();
+                    byte[] baOut = new byte[iJsonlen + 6];
+
+                    if (iInstallFailReturn != 0) {
+                        byte[] baErrorTemp = Integer.toString(iInstallFailReturn).getBytes();
+                        for (int index = 0; index < 2; index++) {
+                            baOut[index] = baErrorTemp[index];
+                        }
+                    }else{
+                        baOut[0] = 0x00;
+                        baOut[1] = 0x00;
+                    }
+                    if(!boStatus) {
+                        baOut[0] = 0x00;
+                        baOut[1] = 0x43;
+                    }
+                    System.arraycopy(balen,0,baOut,2,4);
+                    System.arraycopy(baJson,0,baOut,6,iJsonlen);
+                    for (int index = 0; index < 2; index++) {
+                        Log.d("ttsss", String.valueOf(baOut[index]));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+                break;
         }
+
     }
 
 
