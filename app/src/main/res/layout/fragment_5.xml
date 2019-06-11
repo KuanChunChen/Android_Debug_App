@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="600dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -104,6 +104,12 @@
             android:text="Clean Edit Text" />
 
         <Button
+            android:id="@+id/frag5_btn_9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GetRebootFile" />
+
+        <Button
             android:id="@+id/frag5_btn_leave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,8 +119,7 @@
             android:id="@+id/frag5_text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars = "vertical"
-            />
+            android:scrollbars="vertical" />
 
     </LinearLayout>
 

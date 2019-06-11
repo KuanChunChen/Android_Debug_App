@@ -79,7 +79,7 @@ public class GetfileMAin {
             //String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath();
             //String savePath = fullPath + File.separator + strFileName + d_FILE_TYPE;
             String savePath = strFilePath + File.separator + strFileName + strFileType;
-            Log.d("SAVEPATH", savePath);
+            Log.d("SAVEPATH", savePath + "|");
             buffReader = new BufferedReader(new FileReader(savePath));
             String line = "";
             while ((line = buffReader.readLine()) != null) {

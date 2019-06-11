@@ -19,6 +19,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import utility.castles.getfile.GetfileMAin;
 import utility.castles.getfile.R;
 import utility.castles.getfile.util.ConfigurationUtil;
 
@@ -41,6 +42,8 @@ public class APIFragment extends Fragment implements View.OnClickListener {
     Button frag5Btn7;
     @BindView(R.id.frag5_btn_8)
     Button frag5Btn8;
+    @BindView(R.id.frag5_btn_9)
+    Button frag5Btn9;
     @BindView(R.id.frag5_btn_leave)
     Button frag5BtnLeave;
     @BindView(R.id.frag5_text1)
@@ -68,6 +71,7 @@ public class APIFragment extends Fragment implements View.OnClickListener {
         frag5Btn6.setOnClickListener(this);
         frag5Btn7.setOnClickListener(this);
         frag5Btn8.setOnClickListener(this);
+        frag5Btn9.setOnClickListener(this);
         frag5BtnLeave.setOnClickListener(this);
 
     }
@@ -169,6 +173,18 @@ public class APIFragment extends Fragment implements View.OnClickListener {
                 frag5Text1.setMovementMethod(ScrollingMovementMethod.getInstance());
 //                Log.d("CTMS_configAll", ConfigurationUtil.getAllConfig());
 
+                break;
+            case R.id.frag5_btn_9:
+                String strStatus,strMin,strHour;
+                strMin = new GetfileMAin().readFile("Auto_Reboot_Minute", "", "/data/CastlesFile");
+                strHour= new GetfileMAin().readFile("Auto_Reboot_Hour", "", "/data/CastlesFile");
+                strStatus= new GetfileMAin().readFile("Auto_Reboot_Status", "", "/data/CastlesFile");
+                frag5Text1.setText("Hour :　" + strHour + "\r\n" +
+                        "Min :　" + strMin + "\r\n" +
+                        "Status :　" + strStatus + "\r\n");
+                Log.d("Reboot", "Hour :　" + strHour + "\r\n" +
+                        "Min :　" + strMin + "\r\n" +
+                        "Status :　" + strStatus + "\r\n");
                 break;
         }
     }

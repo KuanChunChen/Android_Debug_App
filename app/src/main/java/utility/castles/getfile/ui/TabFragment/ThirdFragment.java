@@ -203,6 +203,7 @@ public class ThirdFragment extends Fragment implements View.OnClickListener {
                         Log.e("My cradle ", "string is null");
                     } else {
                         Log.e("My cradle ", strCMFVersion);
+                        tv1.setText(strCMFVersion);
                         Toast.makeText(getContext(), "My cradele =" + strCMFVersion, Toast.LENGTH_LONG).show();
                         String[] strArrayCradle = strCMFVersion.split("\\s+");
                         for (String each: strArrayCradle){
