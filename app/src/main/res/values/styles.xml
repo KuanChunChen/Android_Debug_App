@@ -7,5 +7,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <string-array name="file_type">
+        <item>.json</item>
+        <item>.txt</item>
+        <item>.prm</item>
+    </string-array>
 </resources>

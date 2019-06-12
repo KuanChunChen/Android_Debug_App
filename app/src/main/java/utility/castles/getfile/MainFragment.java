@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import utility.castles.getfile.ui.TabFragment.APIFragment;
+import utility.castles.getfile.ui.TabFragment.FileFragment;
 import utility.castles.getfile.ui.TabFragment.FirstFragment;
 import utility.castles.getfile.ui.TabFragment.SecondFragment;
 import utility.castles.getfile.ui.TabFragment.ThirdFragment;
@@ -21,7 +22,7 @@ public class MainFragment extends AppCompatActivity {
     private final FragmentManager fm = getFragmentManager();
     private Boolean AisActive=false;
     private Fragment currentFragment=null;
-    private FirstFragment FirstFragment = new FirstFragment();
+    private FileFragment FirstFragment = new FileFragment();
     private SecondFragment SecondFragment = new SecondFragment();
     private ThirdFragment ThirdFragment = new ThirdFragment();
     private WifiTestFragment WifiTestFragment = new WifiTestFragment();
