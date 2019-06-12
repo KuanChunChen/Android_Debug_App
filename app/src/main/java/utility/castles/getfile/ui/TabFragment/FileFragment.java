@@ -51,6 +51,10 @@ public class FileFragment extends Fragment implements View.OnClickListener {
     private static final String PRM_CASE_ONE = "[{\"PRM\":{\"Name1\":\"Content1\",\"Name2\":\"\",\"Name3\":\"Content1\"},\"VR\":\"9006\"},{\"PRM\":{\"Name1\":\"Content1\",\"Name2\":\"\",\"Name31\":\"Content1\",\"Name32\":\"a1_\"},\"VR\":\"9005\"}]";
     @BindView(R.id.tv_readContent)
     TextView tvReadContent;
+    @BindView(R.id.tv_File)
+    TextView tvFile;
+    @BindView(R.id.sp_file)
+    Spinner spFile;
 
     private View view;
     private String strMakeFileType;
@@ -72,7 +76,22 @@ public class FileFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_Test:
-                new FileUtil().FileFilter(new File(etPath.getText().toString()));
+                File[] myFileList = new FileUtil().FileFilter(new File(etPath.getText().toString()));
+                String[] myStrList = new String[myFileList.length];
+                if (myFileList.length != 0) {
+                    tvFile.setVisibility(View.VISIBLE);
+                    spFile.setVisibility(View.VISIBLE);
+                    for(int i=0 ;i<myFileList.length;i++){
+                        myStrList[i] = myFileList[i].getAbsolutePath().replaceAll(strCurrentPath,"");
+                    }
+                    ArrayAdapter<String> lunchList = new ArrayAdapter<>(view.getContext(),
+                            android.R.layout.simple_spinner_dropdown_item,
+                            myStrList);
+                    spFile.setAdapter(lunchList);
+                }
+
+
+
                 break;
             case R.id.btn_mkf:
                 final int random = new Random().nextInt(Integer.MAX_VALUE);
