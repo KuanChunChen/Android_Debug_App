@@ -47,7 +47,14 @@ public class FileUtil {
 
         return list;
     }
-
+    public static boolean isDirectoryExist(String strPath){
+        File mFile = new File(strPath);
+        if (mFile.exists()){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public static boolean deleteAllFile(File folder) {
         boolean success = folder.delete();
         if (success) {

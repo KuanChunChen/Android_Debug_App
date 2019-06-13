@@ -8,8 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <string-array name="file_type">
+        <item>.prm</item>
         <item>.json</item>
         <item>.txt</item>
-        <item>.prm</item>
+        <item>COM.EXAMPLE.CASTLES_USER.TESTAPP1.prm</item>
     </string-array>
 </resources>
