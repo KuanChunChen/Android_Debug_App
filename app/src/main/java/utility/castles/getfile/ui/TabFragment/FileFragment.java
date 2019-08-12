@@ -9,6 +9,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -29,6 +30,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.Random;
 
+import CTOS.CtCtms;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -104,6 +106,8 @@ public class FileFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+
+
     @Override
     public void onClick(View v) {
 
@@ -111,8 +115,9 @@ public class FileFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_Test:
                 if (mFileUtil.isDirectoryExist(etPath.getText().toString())) {
                     File[] myFileList = mFileUtil.FileFilter(new File(etPath.getText().toString()));
-                    String[] myStrList = new String[myFileList.length];
+
                     if (myFileList.length != 0) {
+                        String[] myStrList = new String[myFileList.length];
                         tvFile.setVisibility(View.VISIBLE);
                         spFile.setVisibility(View.VISIBLE);
                         for (int i = 0; i < myFileList.length; i++) {
@@ -171,7 +176,7 @@ public class FileFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.btn_mkf:
-
+                Log.d("test", new CtCtms().getAllConfig());
                 final int random = new Random().nextInt(Integer.MAX_VALUE);
                 if (mFileUtil.isDirectoryExist(etPath.getText().toString())) {
                     if (strMakeFileType.equals("COM.EXAMPLE.CASTLES_USER.TESTAPP1.prm")) {
@@ -183,7 +188,7 @@ public class FileFragment extends Fragment implements View.OnClickListener {
                     }
                     tvContent.setText("Make file success ! ");
                     tvContent.setTextColor(Color.GREEN);
-                    tvReadContent.setText("");
+                    tvReadContent.setText(new CtCtms().getAllConfig());
                 } else {
                     tvContent.setText("Directory not exist , can not create file.");
                     tvContent.setTextColor(Color.RED);

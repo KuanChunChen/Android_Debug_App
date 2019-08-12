@@ -5,20 +5,20 @@
         android:checked="true"
         android:icon="@drawable/ic_audiotrack_black_24dp"
         android:title="@string/getfile" />
-    <item
-        android:id="@+id/menu_debug"
-        android:icon="@drawable/ic_audiotrack_black_24dp"
-        android:title="@string/debug" />
-    <item
-        android:id="@+id/menu_setting"
-        android:icon="@drawable/ic_audiotrack_black_24dp"
-        android:title="@string/setting" />
+    <!--<item-->
+        <!--android:id="@+id/menu_debug"-->
+        <!--android:icon="@drawable/ic_audiotrack_black_24dp"-->
+        <!--android:title="@string/debug" />-->
+    <!--<item-->
+        <!--android:id="@+id/menu_setting"-->
+        <!--android:icon="@drawable/ic_audiotrack_black_24dp"-->
+        <!--android:title="@string/setting" />-->
     <item
         android:id="@+id/menu_wifi"
         android:icon="@drawable/ic_audiotrack_black_24dp"
         android:title="@string/wifi" />
-    <item
-        android:id="@+id/Api_test"
-        android:icon="@drawable/ic_audiotrack_black_24dp"
-        android:title="@string/wifi" />
+    <!--<item-->
+        <!--android:id="@+id/Api_test"-->
+        <!--android:icon="@drawable/ic_audiotrack_black_24dp"-->
+        <!--android:title="@string/wifi" />-->
 </menu>

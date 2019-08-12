@@ -40,10 +40,10 @@ public class FileUtil {
             }};
 
         File[] list = folder.listFiles(mediafilefilter);
-        for (int i = 0; i < list.length; i++) {
-            Log.d("FileTest", list[i].toString());
-
-        }
+//        for (int i = 0; i < list.length; i++) {
+//            Log.d("FileTest", list[i].toString());
+//
+//        }
 
         return list;
     }

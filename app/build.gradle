@@ -3,11 +3,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "utility.castles.getfile"
+        applicationId "utility.k.c.getfile_2"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 3
-        versionName "1.0.10"
+        versionName "1.0.11"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     dataBinding {
@@ -18,6 +18,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -35,5 +39,5 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     implementation files('libs/ctsystem_0.0.24.jar')
     implementation 'pub.devrel:easypermissions:1.0.1'
-
+    implementation files('libs/CtLoader_test.jar')
 }

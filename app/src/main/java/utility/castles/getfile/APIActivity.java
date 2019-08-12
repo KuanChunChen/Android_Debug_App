@@ -172,7 +172,7 @@ public class APIActivity extends AppCompatActivity implements View.OnClickListen
                 List<ApplicationInfo> installedApplications = packageManager.getInstalledApplications(PackageManager.GET_META_DATA | PackageManager.GET_SHARED_LIBRARY_FILES);
                 for (ApplicationInfo appInfo : installedApplications) {
                     if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 1) {
-                        // System application so do nothing
+                        // SystemData application so do nothing
                     } else {
                         // Installed by user
 //                    Log.d("CTMS","[ClientThread]Name: " + appInfo.loadLabel(packageManager));

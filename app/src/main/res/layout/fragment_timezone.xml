@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragTZ"
+    >
+
+    <LinearLayout
+        android:id="@+id/fragTZ_liner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+
+        <Button
+            android:id="@+id/fragTZ_btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="GetTimeZone" />
+
+        <Button
+            android:id="@+id/fragTZ_btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TimeFormat" />
+
+        <Button
+            android:id="@+id/fragTZ_btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ChangeTimeZone" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragTZ_liner2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="55dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_below="@id/fragTZ_liner">
+
+        <TextView
+            android:id="@+id/fragTZ_tv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF0000"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/fragTZ_tv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0000FF"
+            android:scrollbars="vertical"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/fragTZ_tv3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00FF00"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+
+</LinearLayout>

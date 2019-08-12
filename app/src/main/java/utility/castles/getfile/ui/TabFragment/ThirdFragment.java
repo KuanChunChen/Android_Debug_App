@@ -327,12 +327,15 @@ public class ThirdFragment extends Fragment implements View.OnClickListener {
 
 
     public void initListview(){
-
+        TelephonyManager telManager = ((TelephonyManager) view.getContext().getSystemService(Context.TELEPHONY_SERVICE));
+        GetTerminalInfo myGetTerminalInfo = new GetTerminalInfo();
+        terminalInfomation = myGetTerminalInfo.getGsonInformation(view.getContext());
+        Log.d("My terminal info", myInfo.toJson(terminalInfomation));
         if(PermissionManager.checkPermission(view.getContext(), DebugAppConstants.Permission.PERMISSION_GET_TERMINAL_INFO)) {
-            TelephonyManager telManager = ((TelephonyManager) view.getContext().getSystemService(Context.TELEPHONY_SERVICE));
-            GetTerminalInfo myGetTerminalInfo = new GetTerminalInfo();
-            terminalInfomation = myGetTerminalInfo.getGsonInformation(view.getContext());
-            Log.d("My terminal info", myInfo.toJson(terminalInfomation));
+//            TelephonyManager telManager = ((TelephonyManager) view.getContext().getSystemService(Context.TELEPHONY_SERVICE));
+//            GetTerminalInfo myGetTerminalInfo = new GetTerminalInfo();
+//            terminalInfomation = myGetTerminalInfo.getGsonInformation(view.getContext());
+//            Log.d("My terminal info", myInfo.toJson(terminalInfomation));
         }else{
             Log.d("My terminal info", "No permission");
         }

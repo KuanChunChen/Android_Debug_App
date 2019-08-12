@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">Debug_app</string>
-    <string name="getfile">GetInsideFile</string>
+    <string name="app_name">PrmApplication_2</string>
+    <string name="getfile">File Test</string>
     <string name="debug">GetUSBfile</string>
     <string name="setting">setting</string>
-    <string name="wifi">wifiManager</string>
+    <string name="wifi">Exit</string>
     <string name="api">apiTest</string>
+    <string name="full_date">yyyy/MM/dd HH:mm:ss</string>
 </resources>

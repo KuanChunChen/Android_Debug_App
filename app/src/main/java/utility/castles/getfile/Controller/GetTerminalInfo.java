@@ -97,7 +97,6 @@ public class GetTerminalInfo {
 
         BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
         terminalInfomationReturn.btAddress = (btAdapter != null) ? btAdapter.getAddress() : "";
-
         terminalInfomationReturn.strAndroid = Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
 
         terminalInfomationReturn.strUUID = UUID.randomUUID().toString();
@@ -110,9 +109,9 @@ public class GetTerminalInfo {
         //gps位置
         LocationManager locationManager;
         String context = Context.LOCATION_SERVICE;
-        locationManager = (LocationManager)mContext.getSystemService(context);
+        locationManager = (LocationManager)mContext.getSystemService(Context.LOCATION_SERVICE);
         String provider = LocationManager.GPS_PROVIDER;
-        Location location = locationManager.getLastKnownLocation(provider);
+        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         terminalInfomationReturn.strGpsLocation = updateWithNewLocation(location);
 
         return terminalInfomationReturn;
@@ -178,6 +177,8 @@ public class GetTerminalInfo {
 
         return latLongString;
     }
+
+
 
 
 }

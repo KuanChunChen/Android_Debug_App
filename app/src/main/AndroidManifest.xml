@@ -28,7 +28,9 @@
         android:supportsRtl="true"
         android:largeHeap="true"
         android:hardwareAccelerated="true"
-        android:theme="@style/Theme.AppCompat.Light">
+        android:theme="@style/Theme.AppCompat.Light"
+        android:name=".App"
+        >
 
         <activity
             android:name=".WelcomeActivity"

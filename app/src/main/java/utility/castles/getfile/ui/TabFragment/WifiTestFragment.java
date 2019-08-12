@@ -1,5 +1,7 @@
 package utility.castles.getfile.ui.TabFragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -50,6 +52,7 @@ public class WifiTestFragment extends Fragment {
     private void init() {
         mMifiController = new WifiController(getContext());
         mGetCtmsConfig = new CtmsConfigFun();
+        frag4Btn1.setText("exit");
     }
 
     @OnClick(R.id.frag4_btn1)
@@ -58,11 +61,25 @@ public class WifiTestFragment extends Fragment {
 //        mMifiController.getWifi();
 //        Log.d("CTMS_configA", mGetCtmsConfig.getAllconfig());
 //        mGetCtmsConfig.setAllConfig(d_JSON_CTMS_CONFIG_REWRITE_A);
-        Log.d("CTMS_configA", mGetCtmsConfig.getAllconfig());
-        ConfigurationUtil.setTlsConfig();
-        ConfigurationUtil.setCM_Mode(true);
-        Log.d("CTMS_configC", mGetCtmsConfig.getAllconfig());
+//        Log.d("CTMS_configA", mGetCtmsConfig.getAllconfig());
+//        ConfigurationUtil.setTlsConfig();
+//        ConfigurationUtil.setCM_Mode(true);
+//        Log.d("CTMS_configC", mGetCtmsConfig.getAllconfig());
+        new AlertDialog.Builder(view.getContext())
+                .setTitle("警告！").setIcon(R.mipmap.ic_launcher)
+                .setMessage("確定要離開本程式？")
+                .setPositiveButton("取消", new DialogInterface.OnClickListener() {
 
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //finish();
+                    }
+                }).setNegativeButton("離開", new DialogInterface.OnClickListener() {
+            /*設定跳出視窗的返回事件*/
+            public void onClick(DialogInterface dialoginterface, int i) {
+                System.exit(0);
+            }
+        }).show();
     }
 
     @Override
