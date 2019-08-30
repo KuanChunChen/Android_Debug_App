@@ -36,6 +36,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import utility.castles.getfile.R;
 import utility.castles.getfile.module.permission.PermissionManager;
+import utility.castles.getfile.test.typeTest;
 import utility.castles.getfile.util.FileUtil;
 
 public class FileFragment extends Fragment implements View.OnClickListener {
@@ -312,6 +313,8 @@ public class FileFragment extends Fragment implements View.OnClickListener {
     }
 
     public void init() {
+        typeTest.typeTest();
+
         btnTest.setOnClickListener(this);
         btnMkf.setOnClickListener(this);
         bntDel.setOnClickListener(this);

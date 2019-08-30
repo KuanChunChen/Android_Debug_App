@@ -2,8 +2,54 @@ package utility.castles.getfile.Define;
 
 import android.os.Environment;
 
+import utility.castles.getfile.App;
+import utility.castles.getfile.util.FileUtil;
+
 public class Define {
 
+
+    //
+    //
+    public final static String PATH_SME_AME = FileUtil.getDefaultFolder(App.getContext()) + "/ExtraModuleList";
+    //
+    public final static String ID_BOOTSULD = "ID_BOOTSULD";
+    public final static String ID_CRYPTO_HAL = "ID_CRYPTO_HAL";
+    public final static String ID_LINUX_KERNEL = "ID_LINUX_KERNEL";
+    public final static String ID_SECURITY_KO = "ID_SECURITY_KO";
+    public final static String ID_SYSUPD_KO = "ID_SYSUPD_KO";
+
+    public final static String ID_KMS = "ID_KMS";
+    public final static String ID_CADRV_KO = "ID_CADRV_KO";
+    public final static String ID_CAUSB_KO = "ID_CAUSB_KO";
+    public final static String ID_LIBCAUART_SO = "ID_LIBCAUART_SO";
+    public final static String ID_LIBCAUSBH_SO = "ID_LIBCAUSBH_SO";
+    public final static String ID_LIBCAMODEM_SO = "ID_LIBCAMODEM_SO";
+    public final static String ID_LIBCAETHERNET_SO = "ID_LIBCAETHERNET_SO";
+    public final static String ID_LIBCAFONT_SO = "ID_LIBCAFONT_SO";
+    public final static String ID_LIBCALCD_SO = "ID_LIBCALCD_SO";
+    public final static String ID_LIBCAPRT_SO = "ID_LIBCAPRT_SO =";
+    public final static String ID_LIBCARTC_SO = "ID_LIBCARTC_SO";
+    public final static String ID_LIBCAULDPM_SO = "ID_LIBCAULDPM_SO";
+    public final static String ID_LIBCAPMODEM_SO = "ID_LIBCAPMODEM_SO";
+    public final static String ID_LIBCAGSM_SO = "ID_LIBCAGSM_SO";
+    public final static String ID_LIBCAEMVL2_SO = "ID_LIBCAEMVL2_SO";
+    public final static String ID_LIBCAKMS_SO = "ID_LIBCAKMS_SO";
+    public final static String ID_LIBCAFS_SO = "ID_LIBCAFS_SO";
+    public final static String ID_LIBCABARCODE_SO = "ID_LIBCABARCODE_SO";
+    public final static String ID_CRADLE_MP = "ID_CRADLE_MP";
+    public final static String ID_LIBTLS_SO = "ID_LIBTLS_SO";
+    public final static String ID_LIBCLVW_SO = "ID_LIBCLVW_SO";
+    public final static String ID_LIBCTOSAPI_SO = "ID_LIBCTOSAPI_SO";
+    public final static String ID_SAM_KO = "ID_SAM_KO";
+    public final static String ID_CLVWM_MP = "ID_CLVWM_MP";
+    public final static String ID_ROOTFS = "ID_ROOTFS";
+    public final static String ID_BIOS = "ID_BIOS";
+    public final static String ID_CIF_KO = "ID_CIF_KO";
+    public final static String ID_CLDRV_KO = "ID_CLDRV_KO";
+    public final static String ID_TMS = "ID_TMS";
+    public final static String ID_ULDPM = "ID_ULDPM";
+    public final static String ID_EMV_SO = "ID_EMV_SO";
+    public final static String ID_EMVCL_SO = "ID_EMVCL_SO";
 
 
     //file 相關
